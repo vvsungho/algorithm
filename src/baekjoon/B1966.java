@@ -3,7 +3,9 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -37,54 +39,39 @@ public class B1966 {
 
             String priorityData = br.readLine();
             String[] prioritySplit = priorityData.split(" ");
-            int [] priority = new int[prioritySplit.length];
-            Queue<Item> items = new LinkedList<Item>();
-            for (int j = 0; j < N; j++) {
-                priority[j] = Integer.parseInt(prioritySplit[j]);
-                items.add(new Item(priority[j], j));
-            }
-
+            int[] priorities = new int[prioritySplit.length];
+            Queue<Map<String, Integer>> q = new LinkedList<Map<String, Integer>>();
             int result = 0;
 
-            outer: while (!items.isEmpty()) {
-                Item item = items.peek();
+            for (int j = 0; j < N; j++) {
+                priorities[j] = Integer.parseInt(prioritySplit[j]);
+                Map<String, Integer> item = new HashMap<>();
+                item.put("value", j);
+                item.put("priority", priorities[j]);
+                q.add(item);
+            }
 
-                for (int j = 0; j < items.size(); j++) {
-                    if (item.getPriority() < ((LinkedList<Item>)items).get(j).getPriority()) {
-                        Item moveItem = items.poll();
-                        items.offer(moveItem);
+            outer: while (!q.isEmpty()) {
+                Map<String, Integer> item = (Map<String, Integer>) q.peek();
+
+                for (int j = 0; j < q.size(); j++) {
+                    LinkedList<Map<String, Integer>> convertItem = (LinkedList<Map<String, Integer>>) q;
+                    if (item.get("priority") < convertItem.get(j).get("priority")) {
+                        Map<String, Integer> moveItem  = q.poll();
+                        q.add(moveItem);
                         continue outer;
                     }
                 }
 
-                Item checkItem = items.poll();
-                result++; // 몇 번째
-                if (checkItem.getValue() == M) {
+                result++;
+                Map<String, Integer> compareItem = (Map<String, Integer>) q.poll();
+                if (M == compareItem.get("value")) {
                     System.out.println(result);
                     break;
                 }
 
             }
-
         }
     }
 }
 
-
-class Item {
-    private int priority;
-    private int value;
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public Item(int priority, int value) {
-        this.priority = priority;
-        this.value = value;
-    }
-}
