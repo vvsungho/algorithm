@@ -29,7 +29,7 @@ import java.util.Queue;
 public class B1966 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int testcase = Integer.parseInt(br.readLine()); // @1
+        int testcase = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < testcase; i++) {
             String inputData = br.readLine();
@@ -41,7 +41,7 @@ public class B1966 {
             String[] prioritySplit = priorityData.split(" ");
             int[] priorities = new int[prioritySplit.length];
             Queue<Map<String, Integer>> q = new LinkedList<Map<String, Integer>>();
-            int result = 0;
+            int result = 0; /// 몇 번째로 출력될 지 구하는 변수.
 
             for (int j = 0; j < N; j++) {
                 priorities[j] = Integer.parseInt(prioritySplit[j]);
