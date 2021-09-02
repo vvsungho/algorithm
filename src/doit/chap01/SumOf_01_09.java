@@ -1,6 +1,6 @@
-package chap01;
+package doit.chap01;
 import java.util.Scanner;
-// 정수a, b를 포함하여 그 사이의 모든 정수의 합을 구합니다. 
+// 정수a, b를 포함하여 그 사이의 모든 정수의 합을 구합니다.
 
 class SumOf_01_09 {
 	static int sumof(int a, int b) {

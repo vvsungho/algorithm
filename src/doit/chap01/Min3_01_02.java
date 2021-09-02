@@ -1,4 +1,4 @@
-package chap01;
+package doit.chap01;
 import java.util.Scanner;
 // 3개의 값의 최솟값을 구하여 출력
 

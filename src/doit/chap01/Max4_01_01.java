@@ -1,4 +1,4 @@
-package chap01;
+package doit.chap01;
 import java.util.Scanner;
 // 네 값의 최댓값을 구하여 나타냄
 
