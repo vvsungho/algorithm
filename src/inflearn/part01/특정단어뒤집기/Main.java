@@ -37,7 +37,7 @@ public class Main {
         // str 마지막 인덱스
         int rt = chars.length - 1;
 
-        for (int i = 0; i < chars.length; i++) {
+        while(lt < rt) {
             if (!Character.isAlphabetic(chars[lt])) {
                 // str의 lt 인덱스가 알파벳이 아닐경우, 단어 뒤집지 않고 인덱스만 한 개 증가.
                 lt ++;
@@ -55,6 +55,7 @@ public class Main {
                 rt --;
             }
         }
+
         String answer = String.valueOf(chars);
         return answer;
     }
