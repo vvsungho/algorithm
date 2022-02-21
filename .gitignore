@@ -1,4 +1,4 @@
-.idea/**
-.out/**
-.algorithm.iml
-.src/.DS_Store
+./idea/**
+./out/**
+./algorithm.iml
+./src/.DS_Store
