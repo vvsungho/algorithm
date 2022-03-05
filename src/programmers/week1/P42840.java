@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * level1
  * https://programmers.co.kr/learn/courses/30/lessons/42840?language=java
  *
  * 문제 설명

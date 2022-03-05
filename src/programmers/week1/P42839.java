@@ -1,10 +1,9 @@
 package programmers.week1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
+ * #level2
  * https://programmers.co.kr/learn/courses/30/lessons/42839
  * 소수 찾기
  * 문제 설명
@@ -31,48 +30,48 @@ import java.util.List;
  */
 
 public class P42839 {
+    static HashSet<Integer> set= new HashSet<>();
+    static char[] arr;
+    static boolean[] visited;
 
-    public static void main(String[] args) {
-//        int [] numbers = new int [] {0, 1, 3};
-        int [] numbers = new int [] {1,7};
-//        int [] numbers = new int [] {0, 1, 1};
-        P42839 p42839 = new P42839();
-        System.out.println("Answer: " + Arrays.toString(p42839.solution(numbers)));
+    public int solution(String numbers) {
+        int answer = 0;
+        arr= new char[numbers.length()];
+        visited= new boolean[numbers.length()];
+
+        for(int i=0; i<numbers.length(); i++){
+            arr[i]=numbers.charAt(i);
+        }
+        recursion("", 0);
+
+        answer= set.size();
+        return answer;
     }
 
-    public int[] solution(int [] numbers) {
-        List<Integer> tmpAnswerList = new ArrayList<>();
-        List<Integer> numberList = new ArrayList<>();
-
-        for (int i = 0; i < numbers.length; i++) {
-            if (!numberList.contains(numbers[i])) {
-                numberList.add(numbers[i]);
-            }
-            for (int j = i + 1; j < numbers.length; j++) {
-                int number = Integer.parseInt(numbers[i] + "" + numbers[j]);
-                if (!numberList.contains(number)) {
-                    numberList.add(number);
-                }
-            }
+    //재귀: 가능한 숫자 조합을 찾고 소수여부에 따라 set에 추가
+    public void recursion(String str, int idx){
+        int num;
+        if(str!="") {
+            num= Integer.parseInt(str);
+            if(isPrime(num)) set.add(num);
         }
 
-        System.out.println("숫자 조합: " + numberList);
+        if(idx== arr.length) return;
 
-        for (int i = 0; i < numberList.size(); i++) {
+        for(int i=0; i<arr.length; i++){
+            if(visited[i]) continue;
+            visited[i]= true;
+            recursion(str+arr[i], idx+1);
+            visited[i]= false;
+        }
+    }//rec
 
-            for (int j = 2; j <= numberList.get(i); j++) {
-                if (numberList.get(i) % j == 0) {
-                    break;
-                }
-            }
-            tmpAnswerList.add(numberList.get(i));
+    public boolean isPrime(int num){ //소수 판별
+        if(num==1||num==0) return false;
+        for(int i=2; i<=Math.sqrt(num); i++){
+            if(num%i==0) return false;
         }
 
-        int [] answers = new int [tmpAnswerList.size()];
-        for (int i = 0; i < tmpAnswerList.size(); i++) {
-            answers[i] = tmpAnswerList.get(i);
-        }
-
-        return answers;
+        return true;
     }
 }
