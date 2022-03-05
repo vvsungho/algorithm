@@ -1,8 +1,8 @@
-package codility;
+package codility.lesson1;
 
 import java.util.Scanner;
 
-public class Lesson1 {
+public class Test {
 
     /**
      * https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
@@ -15,10 +15,10 @@ public class Lesson1 {
 
     public static void main(String[] args) {
 //        System.out.println("abc".substring(0,1));
-        Lesson1 lesson1 = new Lesson1();
+        Test test = new Test();
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-        System.out.println("answer" + lesson1.solution(number));
+        System.out.println("answer" + test.solution(number));
     }
 
     public int solution(int number) {
