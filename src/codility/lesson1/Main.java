@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    // 561892 반례
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Main main = new Main();
@@ -27,8 +28,8 @@ public class Main {
                 char1Count++;
                 if (char0Count > maxChar0Count) {
                     maxChar0Count = char0Count;
-                    char0Count = 0;
                 }
+                char0Count = 0;
             }
         }
 
