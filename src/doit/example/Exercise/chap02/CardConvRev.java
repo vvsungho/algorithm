@@ -33,6 +33,7 @@ class CardConvRev {
 			do {
 				System.out.print("어떤 진수로 변환할까요? (2~36)：");
 				cd = stdIn.nextInt();
+				System.out.print("cd :" + cd);
 			} while (cd < 2 || cd > 36);
 
 			dno = cardConvR(no, cd, cno);		// no를 cd진수로 변환

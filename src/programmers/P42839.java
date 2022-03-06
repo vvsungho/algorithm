@@ -1,4 +1,4 @@
-package programmers.week1;
+package programmers;
 
 import java.util.*;
 
