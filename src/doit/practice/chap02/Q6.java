@@ -2,7 +2,7 @@ package doit.practice.chap02;
 
 import java.util.Scanner;
 
-public class Q16 {
+public class Q6 {
     public static void main(String[] args) {
         solution();
     }
