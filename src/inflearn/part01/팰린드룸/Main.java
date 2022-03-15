@@ -51,8 +51,8 @@ public class Main {
 
         String reverseS = new StringBuilder(s).reverse().toString();
 
-        System.out.println(s);
-        System.out.println(reverseS);
+//        System.out.println(s);
+//        System.out.println(reverseS);
 
 
         if (s.equals(reverseS)) {
