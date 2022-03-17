@@ -1,5 +1,9 @@
 package inflearn.A예제템플릿;
 
+/**
+ *
+ */
+
 import java.util.Scanner;
 
 public class Main {
