@@ -37,21 +37,27 @@ public class Main {
         System.out.println(m.solution(kb.nextInt()));
     }
 
+    // 자연수 n에 해당하는 길이 + 1 만큼 int 배열을 생성해준다. => arr[2] = 0, arr[3] =0
+    // 각 자연수 index에 해당하는 배열의 값이 0일 경우 소수로 인식하여 문제해결 할 예정.
     public int solution(int n) {
         int answer = 0;
+        int[] arr = new int[n+1];
 
-        for (int i = 2; i <= n; i++) {
-            int checkNum = 1;
-            for (int j = 2; j <= i; j++) {
-                checkNum++;
-                if (i % j == 0) {
-                    break;
+        // 1은 소수가 아니므로 2부터 체크
+        for (int i = 2; i<= n; i++) {
+            // 값이 0이면 소수라고 인지하고 소수로 카운트한다.
+            if (arr[i] == 0) {
+                answer++;
+                // 인덱스의 배수에 해당하는 값들은 공배수이므로 소수가 아니다.
+                // i의 배수인 것들을 모두 값을 1을 채워준다.
+                // i = 2일 때 i를 2씩 더하면 2의 배수를 체크할 수 있다.
+                // i = 3일 때 i를 3씩 더하면 3의 배수를 체크할 수 있다.
+                for (int j = i; j <= n; j+=i) {
+                    arr[j] = 1;
                 }
             }
-            if (checkNum == i) {
-                answer++;
-            }
         }
+
         return answer;
     }
 
