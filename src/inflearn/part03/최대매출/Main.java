@@ -59,24 +59,19 @@ public class Main {
     // i-m ~ i번까지 배열의 합을 구하고 오른쪽으로 배열을 한칸씩 밀며 최댓값을 구하는 방식.
     public int solution(int n, int m, int[] arr) {
         int answer = 0;
-
-
         int sum = 0;
         // 초기값 셋팅, 0번 부터 m번까지 합을 미리 구해놓는다.
         for (int i = 0; i < m; i++) {
             sum+=arr[i];
         }
 
+        answer = sum;
         // i-m번의 값은 빼고, i번째 값을 더하면, 한칸씩 앞당기며 합을 구한 것과 같다.
         // 2중 for문보다 속도가 훨씬 빠르다.
         for (int i = m; i < n; i++) {
-            sum -= arr[i-m];
-            sum += arr[i];
-
+            sum += (arr[i] - arr[i-m]);
             // 최댓값 비교
-            if (sum > answer) {
-                answer = sum;
-            }
+            answer = Math.max(answer, sum);
         }
         return answer;
     }
