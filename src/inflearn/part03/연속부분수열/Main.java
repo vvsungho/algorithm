@@ -55,17 +55,7 @@ public class Main {
         System.out.println(main.solution(n, m, arr));
     }
 
-    /**
-     * 1. rt가 가리키고 있는 배열 값을 sum에 더해준다.
-     *
-     * 2. sum과 m이 같을 경우 경우의 수를 증감한다.
-     *
-     * 3. sum이 크거나 같을 경우 배열을 지나왔던 값을 sum에서 빼준고 lt를 증감한다. 단, 지나왔던 값을 하나 빼도 현재의 sum이 m보다 클 수 있으니 while문을 사용하여 sum이 m보다 작아질 때 까지 반복하여 수행해야한다.
-     * @param n
-     * @param m
-     * @param arr
-     * @return
-     */
+
     public int solution(int n, int m, int[] arr) {
         int answer = 0;
         int lt = 0, rt, sum = 0;
