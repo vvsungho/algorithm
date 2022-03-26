@@ -13,8 +13,6 @@ package inflearn.part03.최대길이연속부분수열;
  *
  * 여러분이 만들 수 있는 1이 연속된 연속부분수열은
  *
- * Image1.jpg
- *
  * 이며 그 길이는 8입니다.
  *
  *
@@ -44,6 +42,35 @@ public class Main {
     public static void main(String[] args) {
         Scanner kb = new Scanner(System.in);
         Main main = new Main();
+
+        int n = kb.nextInt();
+        int k = kb.nextInt();
+        int arr[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = kb.nextInt();
+        }
+        System.out.println(main.solution(n, k, arr));
+    }
+
+    public int solution (int n, int k, int[] arr) {
+        int answer=0;
+        int lt = 0, rt = 0, cnt = 0;
+
+        // 1이 연속된 수열의 길이를 구하는 공식 = rt-lt+1
+        // 배열의 0인 부분을 1로 바꾼다는 생각으로 배열의 끝까지 반복. => lt가 커질수록 rt와의 거리가 가까우므로 연속된 1의 갯수가 적다는 것을 의미한다.
+        // cnt는 0을 1로 바꾼 갯수를 의마한다. 0을 1로 바꿀 수 있는 최대 횟수 k가 넘지 않도록 확인해야한다.
+        for (rt = 0; rt < n; rt++) {
+            // 0인 부분을 1로 바꾼 갯수를 증감.
+            if (arr[rt] == 0) cnt++;
+            while (cnt > k) {
+                // 1을 0으로 바꾼 부분을 차감.
+                if (arr[rt] == 0) cnt--;
+                lt++;
+            }
+            answer = Math.max(answer, rt - lt + 1);
+        }
+
+        return answer;
     }
 
 }
