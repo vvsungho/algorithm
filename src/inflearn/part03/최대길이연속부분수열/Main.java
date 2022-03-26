@@ -64,7 +64,7 @@ public class Main {
             if (arr[rt] == 0) cnt++;
             while (cnt > k) {
                 // 1을 0으로 바꾼 부분을 차감.
-                if (arr[rt] == 0) cnt--;
+                if (arr[lt] == 0) cnt--;
                 lt++;
             }
             answer = Math.max(answer, rt - lt + 1);
